@@ -17,7 +17,7 @@ pipeline {
         stage('Deploying application') {
             steps {
                 sh '''
-                    docker stop webapp_ctr 2>/dev/null || true
+                    docker stop webapp_ctr || true
                     docker run --rm -d -p 3000:3000 --name webapp_ctr webapp:${BUILD_NUMBER}
                 '''
             }
